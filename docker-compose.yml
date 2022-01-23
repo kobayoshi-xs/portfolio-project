@@ -8,15 +8,15 @@ services:
       - ./mysql-confd:/etc/mysql/conf.d
     environment:
       MYSQL_ROOT_PASSWORD: password
-  app:
+  web:
     build:
-      context: ./app/
+      context: ./web/
       dockerfile: Dockerfile
     command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     image: rails:dev
     volumes:
-      - ./app:/app
-      - ./app/vendor/bundle:/app/vendor/bundle
+      - ./web:/app
+      - ./web/vendor/bundle:/app/vendor/bundle
     environment:
       TZ: Asia/Tokyo
       RAILS_ENV: development
