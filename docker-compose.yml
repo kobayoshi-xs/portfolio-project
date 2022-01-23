@@ -36,7 +36,7 @@ services:
     ports:
       - "8000:3000"
     depends_on:
-      - app
+      - web
     stdin_open: true
 volumes:
   db-data:
