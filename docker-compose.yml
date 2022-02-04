@@ -9,15 +9,15 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
     command: mysqld --character-set-server=utf8mb4 --explicit_defaults_for_timestamp=true --default-authentication-plugin=mysql_native_password
-  web:
+  rails-api:
     build:
-      context: ./web/
+      context: ./rails-api/
       dockerfile: Dockerfile
     command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     image: rails:dev
     volumes:
-      - ./web:/app
-      - ./web/vendor/bundle:/app/vendor/bundle
+      - ./rails-api:/app
+      - ./rails-api/vendor/bundle:/app/vendor/bundle
     environment:
       TZ: Asia/Tokyo
       RAILS_ENV: development
