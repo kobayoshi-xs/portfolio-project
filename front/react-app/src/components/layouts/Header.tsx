@@ -10,7 +10,7 @@ const HeaderButton = styled(Button)({
     backgroundColor: 'red'
 });
 
-const CommonHeader: React.VFC = () => {
+const Header: React.VFC = () => {
   return (
     <Box
       sx={{
@@ -36,4 +36,4 @@ const CommonHeader: React.VFC = () => {
   )
 }
 
-export default CommonHeader
+export default Header

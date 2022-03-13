@@ -1,5 +1,5 @@
 import React from "react"
-import CommonHeader from "./Header";
+import Header from "./Header";
 
 import { Container, Grid } from "@mui/material"
 import { styled } from "@mui/material/styles"
@@ -19,7 +19,7 @@ const CommonLayout: React.VFC<CommonLayoutProps> = ({ children }) => {
   return (
     <>
       <header>
-        <CommonHeader />
+        <Header />
       </header>
       <main>
         <Container maxWidth="lg">
