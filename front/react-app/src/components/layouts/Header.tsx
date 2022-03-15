@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import { Container, Grid } from "@mui/material"
-import { styled } from "@mui/material/styles"
+import { Container, Grid } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';

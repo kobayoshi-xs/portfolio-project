@@ -1,21 +1,20 @@
-import React from "react"
+import React from "react";
 import Header from "./Header";
 
-import { Container, Grid } from "@mui/material"
-import { styled } from "@mui/material/styles"
+import { Container, Grid } from "@mui/material";
+import { styled } from "@mui/material";
 
-const main = styled('div')({
-  container: {
-    paddingTop: "3rem",
-  },
+const main = styled(Container)({
+  paddingTop: "3rem",
 });
 
-type CommonLayoutProps = {
+/*type CommonLayoutProps = {
   children: React.ReactElement
-}
+}*/
 
 // 全てのページで共通となるレイアウト
-const CommonLayout: React.VFC<CommonLayoutProps> = ({ children }) => {
+/*const CommonLayout: React.VFC<CommonLayoutProps> = ({ children }) => {*/
+const CommonLayout: React.VFC= () => {
   return (
     <>
       <header>
@@ -25,7 +24,7 @@ const CommonLayout: React.VFC<CommonLayoutProps> = ({ children }) => {
         <Container maxWidth="lg">
         <Grid container direction="column" justifyContent="center" alignItems="center">
             <Grid item>
-              {children}
+
             </Grid>
           </Grid>
         </Container>
