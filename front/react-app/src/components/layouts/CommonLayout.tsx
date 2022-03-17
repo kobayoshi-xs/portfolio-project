@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header";
 
 import { Container, Grid } from "@mui/material";
-import { styled } from "@mui/material";
+import styled from "@emotion/styled";
 
 const main = styled(Container)({
   paddingTop: "3rem",
