@@ -4,7 +4,7 @@ import Cookies from "js-cookie"
 import { Box } from "@mui/system";
 
 import { signIn } from "lib/api/auth";
-import { SignInData } from "interfaces/index";
+import { SignInData } from "interfaces";
 
 const SignIn: React.VFC = () => {
     const [email, setEmail] = useState<string>("")
