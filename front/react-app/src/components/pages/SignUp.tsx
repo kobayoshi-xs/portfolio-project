@@ -40,11 +40,11 @@ const SignUp: React.VFC = () => {
                   maxLength: { value: 20, message: "20文字以内にしてください" }
                 }}
                 render={({ field }) => (
-                <TextField
-                  {...field}
-                  label="名前"
-                  onChange={event => setName(event.target.value)}
-                />
+                  <TextField
+                    {...field}
+                    label="名前"
+                    onChange={event => setName(event.target.value)}
+                  />
                 )}
               />
             </Typography>
@@ -57,11 +57,11 @@ const SignUp: React.VFC = () => {
                   required: "入力してください",
                 }}
                 render={({ field }) => (
-                <TextField
-                  {...field}
-                  label="メールアドレス"
-                  onChange={event => setEmail(event.target.value)}
-                />
+                  <TextField
+                    {...field}
+                    label="メールアドレス"
+                    onChange={event => setEmail(event.target.value)}
+                  />
                 )}
               />
             </Typography>
@@ -74,11 +74,11 @@ const SignUp: React.VFC = () => {
                   required: "入力してください"
                 }}
                 render={({ field }) => (
-                <TextField
-                  {...field}
-                  label="パスワード"
-                   onChange={event => setPassword(event.target.value)}
-                />
+                  <TextField
+                    {...field}
+                    label="パスワード"
+                     onChange={event => setPassword(event.target.value)}
+                  />
                 )}
               />
             </Typography>
@@ -91,11 +91,11 @@ const SignUp: React.VFC = () => {
                   required: "入力してください"
                 }}
                 render={({ field }) => (
-                <TextField
-                  {...field}
-                  label="パスワード（確認用）"
-                  onChange={event => setPasswordConfirmation(event.target.value)}
-                />
+                  <TextField
+                    {...field}
+                    label="パスワード（確認用）"
+                    onChange={event => setPasswordConfirmation(event.target.value)}
+                  />
                 )}
               />
             </Typography>
