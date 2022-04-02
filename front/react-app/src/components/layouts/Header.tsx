@@ -29,7 +29,7 @@ const Header: React.VFC = () => {
       <ButtonGroup variant="text" aria-label="text button group">
         <HeaderButton>One</HeaderButton>
         <HeaderButton>Two</HeaderButton>
-        <HeaderButton>Three</HeaderButton>
+        <HeaderButton>新規登録</HeaderButton>
       </ButtonGroup>
     </Box>
   )
