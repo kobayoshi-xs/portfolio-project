@@ -6,6 +6,7 @@ import styled from "@emotion/styled";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
+import { Link }  from "react-router-dom";
 
 const HeaderButton = styled(Button)({
   m: 100,
@@ -29,7 +30,11 @@ const Header: React.VFC = () => {
       <ButtonGroup variant="text" aria-label="text button group">
         <HeaderButton>One</HeaderButton>
         <HeaderButton>Two</HeaderButton>
-        <HeaderButton>新規登録</HeaderButton>
+        <Link to="signin" >
+          <HeaderButton>
+              ログイン
+          </HeaderButton>
+        </Link>
       </ButtonGroup>
     </Box>
   )
