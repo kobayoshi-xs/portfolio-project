@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import Cookies from "js-cookie"
+import { Link } from "react-router-dom";
 
 import { Box } from "@mui/system";
 import Card from '@mui/material/Card';
@@ -65,6 +66,13 @@ export const SignIn: React.VFC = () => {
           <CardActions>
             <Button size="small">ログイン</Button>
           </CardActions>
+          <Typography sx={{ fontSize: 14 }} >
+            まだアカウントをお持ちでない方は
+            <Link to="/signup">
+              こちら
+            </Link>
+            から作成してください。
+          </Typography>
         </Card>
       </form>
     </>

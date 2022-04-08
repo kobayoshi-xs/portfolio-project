@@ -34,12 +34,12 @@ const Header: React.VFC = () => {
         <HeaderButton>Two</HeaderButton>
         <Link to="signin" >
           <HeaderButton>
-              ログイン
+            ログイン
           </HeaderButton>
         </Link>
       </ButtonGroup>
     </Box>
-  )
+  );
 }
 
 export default Header
