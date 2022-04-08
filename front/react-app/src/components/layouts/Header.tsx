@@ -28,7 +28,9 @@ const Header: React.VFC = () => {
       }}
     >
       <ButtonGroup variant="text" aria-label="text button group">
-        <HeaderButton>One</HeaderButton>
+        <Link to="/">
+          <HeaderButton>Home</HeaderButton>
+        </Link>
         <HeaderButton>Two</HeaderButton>
         <Link to="signin" >
           <HeaderButton>

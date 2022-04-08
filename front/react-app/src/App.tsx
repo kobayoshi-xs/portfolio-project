@@ -15,12 +15,12 @@ const App: React.VFC = () => {
   return (
     <BrowserRouter>
       <CommonLayout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="signin" element={<SignIn />} />
-        <Route path="*" element={< Notfound />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="signin" element={<SignIn />} />
+          <Route path="*" element={< Notfound />} />
+        </Routes>
       </CommonLayout>
     </BrowserRouter>
   )
