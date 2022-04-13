@@ -23,7 +23,6 @@ const SignUp: React.VFC = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("")
 
   const {
-    register,
     handleSubmit,
     formState: { errors },
     control
