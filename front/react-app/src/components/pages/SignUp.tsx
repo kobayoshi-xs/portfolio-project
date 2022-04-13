@@ -9,6 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import { FormHelperText } from "@mui/material";
 
 import { signUp } from "lib/api/auth"
 import { SignUpData } from "interfaces"
@@ -21,8 +22,22 @@ const SignUp: React.VFC = () => {
   const [password, setPassword] = useState<string>("")
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("")
 
-  const { register, handleSubmit, control } = useForm<SignUpData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control
+  } = useForm<SignUpData>({
+  });
   const onSubmit: SubmitHandler<SignUpData> = (data) => console.log(data);
+  /*const onSubmit = async data => {
+    await sleep(2000);
+    if (data.username === "bill") {
+      alert(JSON.stringify(data));
+    } else {
+      alert("There is an error");
+    }
+  };*/
 
   return (
     <>
@@ -43,7 +58,8 @@ const SignUp: React.VFC = () => {
                   <TextField
                     {...field}
                     label="名前"
-                    onChange={event => setName(event.target.value)}
+                    error={!!errors.name}
+                    helperText={errors.name && errors.name.message}
                   />
                 )}
               />
@@ -60,7 +76,9 @@ const SignUp: React.VFC = () => {
                   <TextField
                     {...field}
                     label="メールアドレス"
-                    onChange={event => setEmail(event.target.value)}
+                    /*onChange={event => setEmail(event.target.value)}*/
+                    error={!!errors.email}
+                    helperText={errors.email && errors.email.message}
                   />
                 )}
               />
@@ -77,7 +95,9 @@ const SignUp: React.VFC = () => {
                   <TextField
                     {...field}
                     label="パスワード"
-                     onChange={event => setPassword(event.target.value)}
+                    /*onChange={event => setPassword(event.target.value)}*/
+                    error={!!errors.password}
+                    helperText={errors.password && errors.password.message}
                   />
                 )}
               />
@@ -94,7 +114,9 @@ const SignUp: React.VFC = () => {
                   <TextField
                     {...field}
                     label="パスワード（確認用）"
-                    onChange={event => setPasswordConfirmation(event.target.value)}
+                    /*onChange={event => setPasswordConfirmation(event.target.value)}*/
+                    error={!!errors.passwordConfirmation}
+                    helperText={errors.passwordConfirmation && errors.passwordConfirmation.message}
                   />
                 )}
               />
