@@ -29,6 +29,7 @@ const SignUp: React.VFC = () => {
   } = useForm<SignUpData>({
   });
   const onSubmit: SubmitHandler<SignUpData> = (data) => console.log(data);
+
   /*const onSubmit = async data => {
     await sleep(2000);
     if (data.username === "bill") {
@@ -47,7 +48,7 @@ const SignUp: React.VFC = () => {
               <Controller
                 name="name"
                 control={control}
-                /*defaultValue=""*/
+                defaultValue=""
                 rules={{
                   required: "入力してください",
                   minLength: { value: 8, message: "8文字以上にしてください" },
@@ -67,7 +68,7 @@ const SignUp: React.VFC = () => {
               <Controller
                 name="email"
                 control={control}
-                /*defaultValue={email}*/
+                defaultValue=""
                 rules={{
                   required: "入力してください",
                 }}
@@ -86,7 +87,7 @@ const SignUp: React.VFC = () => {
               <Controller
                 name="password"
                 control={control}
-                /*defaultValue={password}*/
+                defaultValue=""
                 rules={{
                   required: "入力してください"
                 }}
@@ -105,7 +106,7 @@ const SignUp: React.VFC = () => {
               <Controller
                 name="passwordConfirmation"
                 control={control}
-                /*defaultValue={passwordConfirmation}*/
+                defaultValue=""
                 rules={{
                   required: "入力してください"
                 }}
@@ -122,7 +123,7 @@ const SignUp: React.VFC = () => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">新規登録</Button>
+            <Button size="small" type="submit" >新規登録</Button>
           </CardActions>
         </Card>
       </form>
