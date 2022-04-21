@@ -19,7 +19,12 @@ export const SignIn: React.VFC = () => {
   const [password, setPassword] = useState<string>("")
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
 
-  const { register, handleSubmit, control } = useForm<SignInData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control
+  } = useForm<SignInData>();
   const onSubmit: SubmitHandler<SignInData> = (data) => console.log(data);
 
   return (
@@ -31,6 +36,7 @@ export const SignIn: React.VFC = () => {
               <Controller
                 name="email"
                 control={control}
+                defaultValue=""
                 rules={{
                   required: "入力してください",
                   minLength: { value: 8, message: "8文字以上にしてください" },
@@ -40,6 +46,8 @@ export const SignIn: React.VFC = () => {
                   <TextField
                     {...field}
                     label="メールアドレス"
+                    error={!!errors.email}
+                    helperText={errors.email && errors.email.message}
                   />
                   )}
               />
@@ -48,7 +56,7 @@ export const SignIn: React.VFC = () => {
               <Controller
                   name="password"
                   control={control}
-                  /*defaultValue=""*/
+                  defaultValue=""
                   rules={{
                     required: "入力してください",
                     minLength: { value: 8, message: "8文字以上にしてください" },
@@ -58,13 +66,15 @@ export const SignIn: React.VFC = () => {
                     <TextField
                       {...field}
                       label="パスワード"
+                      error={!!errors.password}
+                      helperText={errors.password && errors.password.message}
                     />
                   )}
                 />
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">ログイン</Button>
+            <Button size="small" type="submit">ログイン</Button>
           </CardActions>
           <Typography sx={{ fontSize: 14 }} >
             まだアカウントをお持ちでない方は
