@@ -13,19 +13,42 @@ import TextField from '@mui/material/TextField';
 
 import { signIn } from "lib/api/auth";
 import { SignInData } from "interfaces";
+import { access } from "fs";
 
 export const SignIn: React.VFC = () => {
+  const [name, setName] = useState<string>("")
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
 
   const {
-    register,
     handleSubmit,
     formState: { errors },
     control
   } = useForm<SignInData>();
-  const onSubmit: SubmitHandler<SignInData> = (data) => console.log(data);
+  const onSubmit = async (e: React.FormHTMLAttributes<HTMLFormElement>) => {
+
+    const data: SignInData = {
+      name: name,//これを削除すると型定義でエラー発生する！
+      email: email,
+      password: password
+    }
+
+    try {
+      const res = await signIn(data)
+      console.log(res)
+
+      if (res.status === 200) {
+        Cookies.set("_access_token", res.headers["access_token"])
+        Cookies.set("_client", res.headers["client"])
+        Cookies.set("_uid", res.headers["uid"])
+      } else {
+        alert("エラーが発生しました。");
+      }
+    } catch(e) {
+      alert("エラーが発生しました。")
+    }
+  }
 
   return (
     <>

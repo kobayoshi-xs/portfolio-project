@@ -30,7 +30,6 @@ const SignUp: React.VFC = () => {
     formState: { errors },
     control
   } = useForm<SignUpData>();
-  /*const onSubmit: SubmitHandler<SignUpData> = (data) => console.log(data);*/
 
   const onSubmit = async (e: React.FormHTMLAttributes<HTMLFormElement>) => {
 
