@@ -8,11 +8,11 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
 import { Link }  from "react-router-dom";
 
-const HeaderButton = styled(Button)({
-  m: 100,
-});
-
 const Header: React.VFC = () => {
+  const HeaderButton = styled(Button)({
+    m: 100,
+  });
+
   return (
     <Box
       sx={{
