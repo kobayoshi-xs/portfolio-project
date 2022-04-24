@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import Cookies from "js-cookie"
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Box } from "@mui/system";
 import Card from '@mui/material/Card';
@@ -16,6 +17,8 @@ import { SignInData } from "interfaces";
 import { access } from "fs";
 
 export const SignIn: React.VFC = () => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState<string>("")
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
@@ -42,6 +45,9 @@ export const SignIn: React.VFC = () => {
         Cookies.set("_access_token", res.headers["access_token"])
         Cookies.set("_client", res.headers["client"])
         Cookies.set("_uid", res.headers["uid"])
+
+        navigate("/")
+        alert("成功")
       } else {
         alert("エラーが発生しました。");
       }
