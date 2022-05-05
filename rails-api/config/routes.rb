@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       namespace :auth do
         resources :sessions, only: %i[index]
       end
+
+      get "recips", to: "recips#search"
     end
   end
 end
