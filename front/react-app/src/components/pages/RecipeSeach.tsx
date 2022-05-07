@@ -31,7 +31,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
   }));
 
-const RecipeSeach: React.VFC = () =>{
+const RecipeSeach: React.VFC = () => {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
