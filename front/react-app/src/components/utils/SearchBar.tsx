@@ -7,3 +7,5 @@ const SearchBar: React.VFC = () => {
     </>
   )
 }
+
+export default SearchBar
