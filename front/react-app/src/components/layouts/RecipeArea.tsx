@@ -6,6 +6,8 @@ import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 
 import SearchBar from "components/utils/SearchBar";
+import { Pagination } from "@mui/material";
+import RecipeSeach from "components/pages/RecipeSeach";
 
 export const RecipeArea: React.VFC = () => {
   return (
@@ -22,13 +24,16 @@ export const RecipeArea: React.VFC = () => {
             flexWrap: 'wrap',
             '& > :not(style)': {
               m: 1,
-              width: 100,
-              height: 300,
+              width: 1200,
+              height: 4000,
             },
           }}
         >
-          <Paper elevation={3} />
+          <Paper elevation={3}>
+            <RecipeSeach />
+          </Paper>
         </Box>
+        <Pagination />
       </Container>
     </React.Fragment>
   );
