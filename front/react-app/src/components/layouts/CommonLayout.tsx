@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Footer } from "./Footer";
 
 import SignUp from "components/pages/SignUp";
 import { SignIn } from "components/pages/SignIn";
@@ -36,6 +37,9 @@ const CommonLayout: React.VFC<CommonLayoutProps>= ({children}) => {
           </Grid>
         </Container>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </>
   )
 }
