@@ -8,13 +8,13 @@ import Paper from '@mui/material/Paper';
 import SearchBar from "components/utils/SearchBar";
 import { Pagination } from "@mui/material";
 import RecipeSeach from "components/pages/RecipeSeach";
+import SideMenu from "components/utils/SideMenu";
 
 export const RecipeArea: React.VFC = () => {
   return (
     <React.Fragment>
       <CssBaseline />
       <Container fixed>
-        {/*<Box sx={{ bgcolor: '#f0f4c3', height: '200vh' }} />*/}
         <div>
           <SearchBar />
         </div>
