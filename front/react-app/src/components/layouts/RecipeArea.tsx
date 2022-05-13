@@ -30,7 +30,9 @@ export const RecipeArea: React.VFC = () => {
           }}
         >
           <Paper elevation={3}>
-            <RecipeSeach />
+            <div style={{margin:'auto',width:'95%'}}>
+              <RecipeSeach />
+            </div>
           </Paper>
         </Box>
         <Pagination />
