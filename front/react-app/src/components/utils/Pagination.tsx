@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 
+import axios from "axios";
+
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
@@ -10,7 +12,13 @@ export const PaginationOutlined: React.VFC = () => {
   const [displayedItems, setDisplayedItems] = useState([]); //表示データ
   const displayNum = 30; //1ページあたりの項目数
 
-  const items = [...]
+  const [post, setPost] = React.useState(null);
+
+  const items = React.useEffect(() => {
+                  axios.get('http://localhost:3000/api/v1/rakuten/recipes').then((response) => {
+                    setPost(response.data);
+                  });
+                }, []);
 
   useEffect(() => {
     setAllItems(items);
