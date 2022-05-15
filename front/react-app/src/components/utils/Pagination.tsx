@@ -12,16 +12,12 @@ export const PaginationOutlined: React.VFC = () => {
   const [displayedItems, setDisplayedItems] = useState([]); //表示データ
   const displayNum = 30; //1ページあたりの項目数
 
-  const [post, setPost] = React.useState(null);
-
-  const items = React.useEffect(() => {
-                  axios.get('http://localhost:3000/api/v1/rakuten/recipes').then((response) => {
-                    setPost(response.data);
-                  });
-                }, []);
+  const items = axios.get('http://localhost:3000/api/v1/rakuten/recipes/search').then((response) => {
+                  setAllItems(response.data);
+                });
 
   useEffect(() => {
-    setAllItems(items);
+    //setAllItems(items);
     //ページカウントの計算（今回は3項目/ページなので4ページ）
     setPageCount(Math.ceil(items.length/displayNum));
     //表示データを抽出
