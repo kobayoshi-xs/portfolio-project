@@ -13,7 +13,9 @@ Rails.application.routes.draw do
         resources :sessions, only: %i[index]
       end
 
-      get "recips", to: "recips#search"
+      namespace :rakuten do
+        get "items", to: "items#search"
+      end
     end
   end
 end

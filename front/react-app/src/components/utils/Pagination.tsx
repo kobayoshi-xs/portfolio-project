@@ -16,20 +16,20 @@ export const PaginationOutlined: React.VFC = () => {
                   setAllItems(response.data);
                 });
 
-  useEffect(() => {
+   useEffect(() => {
     //setAllItems(items);
     //ページカウントの計算（今回は3項目/ページなので4ページ）
     setPageCount(Math.ceil(items.length/displayNum));
     //表示データを抽出
     setDisplayedItems(items.slice(((page - 1) * displayNum), page * displayNum))
-  }, [])
+   }, [])
 
-  const handleChange = (event, index) => {
+   const handleChange = (event, index) => {
     //ページ移動時にページ番号を更新
     setPage(index);
     //ページ移動時に表示データを書き換える
     setDisplayedItems(allItems.slice(((index - 1) * displayNum), index * displayNum))
-  }
+   }
 
   return (
     <Stack spacing={2}>
