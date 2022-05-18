@@ -24,3 +24,11 @@ export interface User {
   image?: string
   allowPasswordChange: boolean
 }
+
+//Recipe.large_categoriesデータ型定義
+export interface LargeCategoties {
+  categoryId: number
+  categoryName: string
+  categoryUrl: string
+  categoryType: string
+}

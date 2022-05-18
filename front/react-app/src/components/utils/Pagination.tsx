@@ -4,6 +4,7 @@ import axios from "axios";
 
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { LargeCategoties } from "interfaces";
 
 export const PaginationOutlined: React.VFC = () => {
   const [page, setPage] = useState(1);//ページ番号
@@ -12,9 +13,11 @@ export const PaginationOutlined: React.VFC = () => {
   const [displayedItems, setDisplayedItems] = useState([]); //表示データ
   const displayNum = 30; //1ページあたりの項目数
 
-  const items = axios.get('http://localhost:3000/api/v1/rakuten/recipes/search').then((response) => {
+  const items =
+                axios.get('http://localhost:3000/api/v1/rakuten/items').then((response) => {
                   setAllItems(response.data);
                 });
+
 
    useEffect(() => {
     //setAllItems(items);
