@@ -27,26 +27,28 @@ const RecipeSeach: React.VFC = () => {
     <>
       <h3>人気メニュー</h3>
         <ImageList sx={{ width: '100%', height: '100%' }} cols={3} rowHeight={250} style={{textAlign: "center"}}>
-          {APIDatas.map((APIDate: LargeCategoties, index) => (
+          {APIDatas.map((APIData: LargeCategoties, index) => (
             <ImageListItem key={index}>
-              <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    alt="レシピ画像"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Lizard
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {APIDate.params.categoryName}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
+              <a href={APIData.params.categoryUrl} style={{textDecoration: 'none'}}>
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image="/static/images/cards/contemplative-reptile.jpg"
+                      alt="レシピ画像"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h6" component="div">
+                        {APIData.params.categoryName}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </a>
             </ImageListItem>
           ))}
           </ImageList>
