@@ -13,10 +13,10 @@ export const PaginationOutlined: React.VFC = () => {
   const [displayedItems, setDisplayedItems] = useState([]); //表示データ
   const displayNum = 30; //1ページあたりの項目数
 
-  const items =
-                axios.get('http://localhost:3000/api/v1/rakuten/items').then((response) => {
-                  setAllItems(response.data);
-                });
+  //const items =
+                //axios.get('http://localhost:3000/api/v1/rakuten/items').then((response) => {
+                  //setAllItems(response.data);
+                //});
 
 
    useEffect(() => {

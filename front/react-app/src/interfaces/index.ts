@@ -27,8 +27,10 @@ export interface User {
 
 //Recipe.large_categoriesデータ型定義
 export interface LargeCategoties {
-  categoryId: number
-  categoryName: string
-  categoryUrl: string
-  categoryType: string
+  params: {
+    categoryId: number
+    categoryName: string
+    categoryUrl: string
+    categoryType: string
+  };
 }
