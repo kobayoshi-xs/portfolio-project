@@ -11,6 +11,6 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
 
     @recipes = @categories_small.first.ranking
     #render json: { status: 200, data: @items }
-    render json:  @categories_large#@items_medium
+    render json: @categories_large#@items_medium
   end
 end
