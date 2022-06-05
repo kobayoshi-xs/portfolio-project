@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
       namespace :rakuten do
         get "items", to: "items#search"
+        get "items", to: "items#read(categorie_large)"
+        get "items", to: "items#read2(categories_medium)"
+        get "items", to: "items#read3(categories_small)"
       end
     end
   end
