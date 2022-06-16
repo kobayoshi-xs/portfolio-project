@@ -7,6 +7,9 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
         item.save
       end
     end
+    #CategoriesLarge.destroy_all
+    #@item_list = CategoriesLarge.all
+    #render json: @item_list
 
     @categories_media = RakutenWebService::Recipe.medium_categories
     @categories_media.each do |categories_medium|
@@ -15,6 +18,8 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
         item.save
       end
     end
+    #@item_list = CategoriesMedium.all
+    #render json: @item_list
 
     @categories_smalls =  RakutenWebService::Recipe.small_categories
     @categories_smalls.each do |categories_small|
@@ -23,19 +28,25 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
         item.save
       end
     end
+    #@item_list = CategoriesMedium.all
+    #render json:
     #@recipes = RakutenWebService::Recipe.large_categories.find_by_id[30]
 
     #@categories_large = RakutenWebService::Recipe.large_categories
     #@categories_medium = RakutenWebService::Recipe.medium_categories
     #@categories_small =  RakutenWebService::Recipe.small_categories
 
-    #@recipes = @categories_small.first.ranking
+    @ranking_recipes = RakutenWebService::Recipe.ranking(category_id = 10-66-50)
+    #@ranking = request.url('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&applicationId=ENV['RWS_APPLICATION_ID']&categoryId=32-339')
+    #@ranking_recipes = @categories_smalls.first.ranking
+    #@recipes = @categories_small.where(categoryId: 32-339)
     #render json: { status: 200, data: @items }
+    render json: @ranking_recipes
 
     #テーブル結合
-    @categories_items = CategoriesLarge.includes(categories_media: :categories_smalls)
+    #@categories_items = CategoriesLarge.includes(categories_media: :categories_smalls)
 
-    render json: @categories_items
+    #render json: @categories_items
   end
 
   private
