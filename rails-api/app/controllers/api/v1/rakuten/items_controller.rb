@@ -36,7 +36,9 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
     #@categories_medium = RakutenWebService::Recipe.medium_categories
     #@categories_small =  RakutenWebService::Recipe.small_categories
 
-    @ranking_recipes = RakutenWebService::Recipe.ranking(category_id = 10-66-50)
+    recipes_id = ENV['RWS_APPLICATION_ID']
+    @ranking_recipes = Faraday.get("https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&applicationId=#{recipes_id}&categoryId=21-441-1464")#URLの部分を’’から""に変えたら#{}の部分がうまくいった
+    #@ranking_recipes = RakutenWebService::Recipe.ranking(category_id = 10-66-50)
     #@ranking = request.url('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&applicationId=ENV['RWS_APPLICATION_ID']&categoryId=32-339')
     #@ranking_recipes = @categories_smalls.first.ranking
     #@recipes = @categories_small.where(categoryId: 32-339)
