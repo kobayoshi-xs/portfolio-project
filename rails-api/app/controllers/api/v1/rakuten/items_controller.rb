@@ -4,7 +4,7 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
     @categories_larges.each do |categories_large|
       item = CategoriesLarge.new(read(categories_large))
       unless CategoriesLarge.all.exists?(categoryName: item.categoryName)
-        item.save
+        item.save!
       end
     end
     #CategoriesLarge.destroy_all
@@ -25,7 +25,7 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
     @categories_smalls.each do |categories_small|
       item = CategoriesSmall.new(read3(categories_small))
       unless CategoriesSmall.all.exists?(categoryName: item.categoryName)
-        item.save
+        item.save!
       end
     end
     #@item_list = CategoriesMedium.all
@@ -36,14 +36,14 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
     #@categories_medium = RakutenWebService::Recipe.medium_categories
     #@categories_small =  RakutenWebService::Recipe.small_categories
 
-    recipes_id = ENV['RWS_APPLICATION_ID']
-    @ranking_recipes = Faraday.get("https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&applicationId=#{recipes_id}&categoryId=21-441-1464")#URLの部分を’’から""に変えたら#{}の部分がうまくいった
+    #recipes_id = ENV['RWS_APPLICATION_ID']
+    #@ranking_recipes = Faraday.get("https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&applicationId=#{recipes_id}&categoryId=21-441-1464")#URLの部分を’’から""に変えたら#{}の部分がうまくいった
     #@ranking_recipes = RakutenWebService::Recipe.ranking(category_id = 10-66-50)
     #@ranking = request.url('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&applicationId=ENV['RWS_APPLICATION_ID']&categoryId=32-339')
     #@ranking_recipes = @categories_smalls.first.ranking
     #@recipes = @categories_small.where(categoryId: 32-339)
     #render json: { status: 200, data: @items }
-    render json: @ranking_recipes
+    #render json: @ranking_recipes
 
     #テーブル結合
     #@categories_items = CategoriesLarge.includes(categories_media: :categories_smalls)
