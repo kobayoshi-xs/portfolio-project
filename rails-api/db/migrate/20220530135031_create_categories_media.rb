@@ -4,7 +4,7 @@ class CreateCategoriesMedia < ActiveRecord::Migration[6.1]
       t.bigint :categoryId, null: false, primary_key: true
       t.string :categoryName
       t.string :categoryUrl
-      t.references :parentCategoryId, null: false
+      t.references :categories_large, null: false
 
       t.timestamps
     end

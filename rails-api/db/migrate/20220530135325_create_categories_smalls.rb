@@ -4,7 +4,7 @@ class CreateCategoriesSmalls < ActiveRecord::Migration[6.1]
       t.bigint :categoryId, null: false, primary_key: true
       t.string :categoryName
       t.string :categoryUrl
-      t.references :parentCategoryId, null: false
+      t.references :categories_medium, null: false
 
       t.timestamps
     end

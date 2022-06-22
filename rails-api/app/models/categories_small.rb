@@ -5,5 +5,5 @@ class CategoriesSmall < ApplicationRecord
 
   validates :categoryId, {presence: true}
   validates :categoryUrl, {presence: true}
-  validates :parentCategoryId_id, {presence: true}
+  validates :categories_medium_id, {presence: true}
 end

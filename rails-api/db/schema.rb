@@ -22,19 +22,19 @@ ActiveRecord::Schema.define(version: 2022_05_30_135325) do
   create_table "categories_media", primary_key: "categoryId", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "categoryName"
     t.string "categoryUrl"
-    t.bigint "parentCategoryId_id", null: false
+    t.bigint "categories_large_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["parentCategoryId_id"], name: "index_categories_media_on_parentCategoryId_id"
+    t.index ["categories_large_id"], name: "index_categories_media_on_categories_large_id"
   end
 
   create_table "categories_smalls", primary_key: "categoryId", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "categoryName"
     t.string "categoryUrl"
-    t.bigint "parentCategoryId_id", null: false
+    t.bigint "categories_medium_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["parentCategoryId_id"], name: "index_categories_smalls_on_parentCategoryId_id"
+    t.index ["categories_medium_id"], name: "index_categories_smalls_on_categories_medium_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

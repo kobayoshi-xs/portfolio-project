@@ -15,11 +15,11 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
     @categories_media.each do |categories_medium|
       item = CategoriesMedium.new(read2(categories_medium))
       unless CategoriesMedium.all.exists?(categoryName: item.categoryName)
-        item.save
+        item.save!
       end
     end
-    #@item_list = CategoriesMedium.all
-    #render json: @item_list
+    @item_list = CategoriesMedium.all
+    render json: test
 
     @categories_smalls =  RakutenWebService::Recipe.small_categories
     @categories_smalls.each do |categories_small|
@@ -39,9 +39,7 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
     #recipes_id = ENV['RWS_APPLICATION_ID']
     #@ranking_recipes = Faraday.get("https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&applicationId=#{recipes_id}&categoryId=21-441-1464")#URLの部分を’’から""に変えたら#{}の部分がうまくいった
     #@ranking_recipes = RakutenWebService::Recipe.ranking(category_id = 10-66-50)
-    #@ranking = request.url('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&applicationId=ENV['RWS_APPLICATION_ID']&categoryId=32-339')
     #@ranking_recipes = @categories_smalls.first.ranking
-    #@recipes = @categories_small.where(categoryId: 32-339)
     #render json: { status: 200, data: @items }
     #render json: @ranking_recipes
 
@@ -67,12 +65,12 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
       categoryId = categories_medium['categoryId']
       categoryName = categories_medium['categoryName']
       categoryUrl = categories_medium['categoryUrl']
-      parentCategoryId_id = categories_medium['parentCategoryId']
+      categories_large_id = categories_medium['parentCategoryId']
       {
         categoryId: categoryId,
         categoryName: categoryName,
         categoryUrl: categoryUrl,
-        parentCategoryId_id: parentCategoryId_id
+        categories_large_id: categories_large_id
       }
     end
 
@@ -80,12 +78,12 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
       categoryId = categories_small['categoryId']
       categoryName = categories_small['categoryName']
       categoryUrl = categories_small['categoryUrl']
-      parentCategoryId_id = categories_small['parentCategoryId']
+      categories_medium_id = categories_small['parentCategoryId']
       {
         categoryId: categoryId,
         categoryName: categoryName,
         categoryUrl: categoryUrl,
-        parentCategoryId_id: parentCategoryId_id
+        categories_medium_id: category_medium_id
       }
     end
 end
