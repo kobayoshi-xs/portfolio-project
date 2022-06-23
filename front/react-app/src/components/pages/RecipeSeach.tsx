@@ -17,7 +17,7 @@ const RecipeSeach: React.VFC = () => {
   const [APIDatas, setAPIDatas] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/rakuten/items').then((response) => {
+    axios.get('http://localhost:3000/api/v1/rakuten/larges').then((response) => {
       setAPIDatas(response.data);
     });
   }, []);
