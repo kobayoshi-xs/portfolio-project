@@ -1,25 +1,25 @@
 class Api::V1::Rakuten::ItemsController < ApplicationController
   def search
-    @categories_larges = RakutenWebService::Recipe.large_categories
-    @categories_larges.each do |categories_large|
-      item = CategoriesLarge.new(read(categories_large))
-      unless CategoriesLarge.all.exists?(categoryName: item.categoryName)
-        item.save!
-      end
-    end
+    #@categories_larges = RakutenWebService::Recipe.large_categories
+    #@categories_larges.each do |categories_large|
+    #  item = CategoriesLarge.new(read(categories_large))
+    #  unless CategoriesLarge.all.exists?(categoryName: item.categoryName)
+    #    item.save!
+    #  end
+    #end
     #CategoriesLarge.destroy_all
     #@item_list = CategoriesLarge.all
     #render json: @item_list
 
-    @categories_media = RakutenWebService::Recipe.medium_categories
-    @categories_media.each do |categories_medium|
-      item = CategoriesMedium.new(read2(categories_medium))
-      unless CategoriesMedium.all.exists?(categoryName: item.categoryName)
-        item.save!
-      end
-    end
-    @item_list = CategoriesMedium.all
-    render json: test
+    #@categories_media = RakutenWebService::Recipe.medium_categories
+    #@categories_media.each do |categories_medium|
+    #  item = CategoriesMedium.new(read2(categories_medium))
+    #  unless CategoriesMedium.all.exists?(categoryName: item.categoryName)
+    #    item.save!
+    #  end
+    #end
+    #@item_list = CategoriesMedium.all
+    #render json: test
 
     @categories_smalls =  RakutenWebService::Recipe.small_categories
     @categories_smalls.each do |categories_small|
@@ -50,29 +50,29 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
   end
 
   private
-    def read(categories_large)
-      categoryId = categories_large['categoryId']
-      categoryName = categories_large['categoryName']
-      categoryUrl = categories_large['categoryUrl']
-      {
-        categoryId: categoryId,
-        categoryName: categoryName,
-        categoryUrl: categoryUrl
-      }
-    end
+    #def read(categories_large)
+    #  categoryId = categories_large['categoryId']
+    #  categoryName = categories_large['categoryName']
+    #  categoryUrl = categories_large['categoryUrl']
+    #  {
+    #    categoryId: categoryId,
+    #    categoryName: categoryName,
+    #    categoryUrl: categoryUrl
+    #  }
+    #end
 
-    def read2(categories_medium)
-      categoryId = categories_medium['categoryId']
-      categoryName = categories_medium['categoryName']
-      categoryUrl = categories_medium['categoryUrl']
-      categories_large_id = categories_medium['parentCategoryId']
-      {
-        categoryId: categoryId,
-        categoryName: categoryName,
-        categoryUrl: categoryUrl,
-        categories_large_id: categories_large_id
-      }
-    end
+    #def read2(categories_medium)
+    #  categoryId = categories_medium['categoryId']
+    #  categoryName = categories_medium['categoryName']
+    #  categoryUrl = categories_medium['categoryUrl']
+    #  categories_large_id = categories_medium['parentCategoryId']
+    #  {
+    #    categoryId: categoryId,
+    #    categoryName: categoryName,
+    #    categoryUrl: categoryUrl,
+    #    categories_large_id: categories_large_id
+    #  }
+    #end
 
     def read3(categories_small)
       categoryId = categories_small['categoryId']
