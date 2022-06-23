@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper';
 import SearchBar from "components/utils/SearchBar";
 import { Pagination } from "@mui/material";
 import RecipeSeach from "components/pages/RecipeSeach";
+import RecipeLarge from "components/pages/RecipeLarge";
 import SideMenu from "components/utils/SideMenu";
 
 export const RecipeArea: React.VFC = () => {

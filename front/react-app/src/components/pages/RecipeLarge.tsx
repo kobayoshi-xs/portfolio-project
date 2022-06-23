@@ -6,27 +6,39 @@ import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 
+import axios from "axios";
+
+import { LargeCategoties } from 'interfaces'
+
 const RecipeLarge: React.VFC = () => {
+  const [APIDatas, setAPIDatas] = useState([]);
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/v1/rakuten/larges').then((response) => {
+      setAPIDatas(response.data);
+    });
+  }, []);
+  console.log(APIDatas)
+
   return (
     <ImageList sx={{ width: 500, height: 450 }}>
       <ImageListItem key="Subheader" cols={2}>
-        <ListSubheader component="div">December</ListSubheader>
+        <ListSubheader component="div">カテゴリー大</ListSubheader>
       </ImageListItem>
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
+      {APIDatas.map((APIData: LargeCategoties, index) => (
+        <ImageListItem key={index}>
           <img
-            src={`${item.img}?w=248&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-            loading="lazy"
+            //src={`${APIData.img}?w=248&fit=crop&auto=format`}
+            //srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            //alt={item.title}
+            //loading="lazy"
           />
           <ImageListItemBar
-            title={item.title}
-            subtitle={item.author}
+            title={APIData.params.categoryName}
+            subtitle="Nil"
             actionIcon={
               <IconButton
                 sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                aria-label={`info about ${item.title}`}
+                aria-label={`info about ${APIData.params.categoryName}`}
               >
                 <InfoIcon />
               </IconButton>
