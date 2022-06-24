@@ -8,8 +8,9 @@ import SignUp from 'components/pages/SignUp';
 import { SignIn } from 'components/pages/SignIn';
 import { Notfound } from 'components/pages/NotFound';
 import RecipeSeach from 'components/pages/RecipeSeach';
-import { RecipeArea } from 'components/layouts/RecipeArea';
+import RecipeArea from 'components/layouts/RecipeArea';
 import RecipeLarge from 'components/pages/RecipeLarge';
+import RecipeMedium from 'components/pages/RecipeMedium';
 
 import { getCurrentUser } from "lib/api/auth"
 import { User } from "interfaces/index"
@@ -24,7 +25,11 @@ const App: React.VFC = () => {
           <Route path="signin" element={< SignIn />} />
           <Route path="*" element={< Notfound />} />
           <Route path="recipe" element={< RecipeSeach />}/>
-          <Route path="recipeArea" element={< RecipeArea />}/>
+          <Route path="recipeArea" element={< RecipeArea />}>
+            <Route path="large" element={< RecipeLarge />}>
+              <Route path="medium" element={< RecipeMedium />}/>
+            </Route>
+          </Route>
           <Route path="recipelarge" element={< RecipeLarge />}/>
         </Routes>
       </CommonLayout>

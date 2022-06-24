@@ -6,7 +6,17 @@ import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 
+import axios from "axios";
+
 const RecipeMedium: React.VFC = () => {
+  const [APIDatas, setAPIDatas] = useState([]);
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/v1/rakuten/media').then((response) => {
+      setAPIDatas(response.data);
+    });
+  }, []);
+  console.log(APIDatas)
+
   return (
     <ImageList sx={{ width: 500, height: 450 }}>
       <ImageListItem key="Subheader" cols={2}>

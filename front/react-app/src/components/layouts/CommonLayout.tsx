@@ -15,14 +15,13 @@ const main = styled(Container)({
 });
 
 type CommonLayoutProps = {
-  children: React.ReactElement
+  children?: React.ReactNode
 }
 
 // 全てのページで共通となるレイアウト
 // CommonLayoutPropsは型定義を行なっていないとApp.tsxでエラー出る。
 // (children)にするとエラー、( {children} )にするとOK
-/*const CommonLayout: React.VFC<CommonLayoutProps> = ({ children }) => {*/
-const CommonLayout: React.VFC<CommonLayoutProps>= ({children}) => {
+const CommonLayout: React.VFC<CommonLayoutProps> = ({children}) => {
   return (
     <>
       <header>

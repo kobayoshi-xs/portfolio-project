@@ -8,6 +8,8 @@ import InfoIcon from '@mui/icons-material/Info';
 
 import axios from "axios";
 
+import RecipeArea from "components/layouts/RecipeArea";
+
 import { LargeCategoties } from 'interfaces'
 
 const RecipeLarge: React.VFC = () => {
@@ -29,8 +31,8 @@ const RecipeLarge: React.VFC = () => {
           <img
             //src={`${APIData.img}?w=248&fit=crop&auto=format`}
             //srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            //alt={item.title}
-            //loading="lazy"
+            alt="画像データ予定"
+            loading="lazy"
           />
           <ImageListItemBar
             title={APIData.params.categoryName}
@@ -49,7 +51,7 @@ const RecipeLarge: React.VFC = () => {
     </ImageList>
   );
 }
-
+//以下削除予定
 const itemData = [
   {
     img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',

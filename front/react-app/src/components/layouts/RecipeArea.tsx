@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -11,7 +11,12 @@ import RecipeSeach from "components/pages/RecipeSeach";
 import RecipeLarge from "components/pages/RecipeLarge";
 import SideMenu from "components/utils/SideMenu";
 
-export const RecipeArea: React.VFC = () => {
+//type RecipeAreaProps = {
+  //children?: React.ReactNode//childlen?は子要素の指定がオプショナルであることを明示
+//}
+
+//const RecipeArea: React.VFC<RecipeAreaProps> = ({children}) => {
+const RecipeArea: React.VFC = () => {
   return (
     <React.Fragment>
       <CssBaseline />
@@ -32,7 +37,8 @@ export const RecipeArea: React.VFC = () => {
         >
           <Paper elevation={3}>
             <div style={{margin:'auto',width:'95%'}}>
-              <RecipeSeach />
+              <RecipeLarge />
+              {/*{children}*/}
             </div>
           </Paper>
         </Box>
@@ -41,3 +47,5 @@ export const RecipeArea: React.VFC = () => {
     </React.Fragment>
   );
 }
+
+export default RecipeArea

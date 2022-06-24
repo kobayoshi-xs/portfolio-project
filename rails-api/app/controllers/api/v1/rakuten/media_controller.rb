@@ -1,12 +1,7 @@
 class Api::V1::Rakuten::MediaController < ApplicationController
   def search
-    @categories_media = RakutenWebService::Recipe.medium_categories
-    @categories_media.each do |categories_medium|
-      item = CategoriesMedium.new(read2(categories_medium))
-      unless CategoriesMedium.all.exists?(categoryName: item.categoryName)
-        item.save!
-      end
-    end
+    recipes_id = ENV['RWS_APPLICATION_ID']
+    @categories_media = Faraday.get("https://app.rakuten.co.jp/services/api/Recipe/CategoryList/20170426?format=json&applicationId=#{recipes_id}&categoryId=21-441-1464")
 
     render json: @categories_media
   end
