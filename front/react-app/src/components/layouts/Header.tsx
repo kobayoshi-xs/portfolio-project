@@ -31,7 +31,9 @@ const Header: React.VFC = () => {
         <Link to="/">
           <HeaderButton>Home</HeaderButton>
         </Link>
-        <HeaderButton>Two</HeaderButton>
+        <Link to="recipeArea">
+          <HeaderButton>Recipe</HeaderButton>
+        </Link>
         <Link to="signin" >
           <HeaderButton>
             ログイン
