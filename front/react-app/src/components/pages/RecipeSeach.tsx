@@ -1,58 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { Children } from "react";
 
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
 
-import axios from "axios";
+import SearchBar from "components/utils/SearchBar";
+import { Pagination } from "@mui/material";
+import RecipeLarge from "components/pages/RecipeLarge";
+import SideMenu from "components/utils/SideMenu";
 
-import { LargeCategoties } from 'interfaces'
-import { setDate } from "date-fns";
+//type RecipeAreaProps = {
+  //children?: React.ReactNode//childlen?は子要素の指定がオプショナルであることを明示
+//}
 
+//const RecipeArea: React.VFC<RecipeAreaProps> = ({children}) => {
 const RecipeSeach: React.VFC = () => {
-  const [APIDatas, setAPIDatas] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/rakuten/larges').then((response) => {
-      setAPIDatas(response.data);
-    });
-  }, []);
-  console.log(APIDatas)
-
   return (
-    <>
-      <h3>人気メニュー</h3>
-        <ImageList sx={{ width: '100%', height: '100%' }} cols={3} rowHeight={250} style={{textAlign: "center"}}>
-          {APIDatas.map((APIData: LargeCategoties, index) => (
-            <ImageListItem key={index}>
-              <a href={APIData.params.categoryUrl} style={{textDecoration: 'none'}}>
-                <Card sx={{ maxWidth: 345 }}>
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      height="140"
-                      image="/static/images/cards/contemplative-reptile.jpg"
-                      alt="レシピ画像"
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h6" component="div">
-                        {APIData.params.categoryName}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </a>
-            </ImageListItem>
-          ))}
-          </ImageList>
-    </>
+    <React.Fragment>
+      <CssBaseline />
+      <Container fixed>
+        <div>
+          <SearchBar />
+        </div>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            '& > :not(style)': {
+              m: 1,
+              width: 1200,
+              height: 4000,
+            },
+          }}
+        >
+          <Paper elevation={3}>
+            <div style={{margin:'auto',width:'95%'}}>
+              <RecipeLarge />
+              {/*{children}*/}
+            </div>
+          </Paper>
+        </Box>
+        <Pagination />
+      </Container>
+    </React.Fragment>
   );
 }
 
