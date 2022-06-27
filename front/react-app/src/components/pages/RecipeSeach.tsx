@@ -29,7 +29,7 @@ const RecipeSeach: React.VFC = () => {
             flexWrap: 'wrap',
             '& > :not(style)': {
               m: 1,
-              width: 1200,
+              width: 1050,
               height: 4000,
             },
           }}
