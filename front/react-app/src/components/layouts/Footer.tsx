@@ -1,6 +1,8 @@
 import React from "react";
 
 import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import { AppBar } from "@mui/material";
 import CopyrightIcon from '@mui/icons-material/Copyright';
 
 export const Footer: React.VFC = () => {
@@ -16,9 +18,14 @@ export const Footer: React.VFC = () => {
         },
         color: 'black',
         bgcolor: 'orange',
+        width: 'auto',
+        position: 'static',
+        zIndex: (theme) => theme.zIndex.drawer + 1
       }}
     >
-      <CopyrightIcon />
+      <BottomNavigation>
+        <CopyrightIcon />
+      </BottomNavigation>
     </Box>
   )
 }
