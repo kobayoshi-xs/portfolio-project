@@ -58,7 +58,7 @@ const SignUp: React.VFC = () => {
   };
 
   return (
-    <>
+    <Box sx={{pt: 10}}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
@@ -145,7 +145,7 @@ const SignUp: React.VFC = () => {
           </CardActions>
         </Card>
       </form>
-    </>
+    </Box>
   )
 }
 

@@ -20,7 +20,6 @@ export const Footer: React.VFC = () => {
         bgcolor: 'orange',
         width: 'auto',
         position: 'static',
-        zIndex: (theme) => theme.zIndex.drawer + 1
       }}
     >
       <BottomNavigation>
