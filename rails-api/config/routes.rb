@@ -24,6 +24,8 @@ Rails.application.routes.draw do
         get "media", to: "media#search"
 
         get "smalls", to: "smalls#search"
+
+        get "lists", to: "lists#search"
       end
     end
   end
