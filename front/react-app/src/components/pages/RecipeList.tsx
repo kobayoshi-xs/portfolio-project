@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -7,8 +7,21 @@ import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 
+import axios from "axios";
+
+import { Ranking } from "interfaces";
+
 const RecipeList: React.VFC = () => {
   const [expanded, setExpanded] = React.useState(false);
+  const [APIDatas, setAPIDatas] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/v1/rakuten/lists').then((response) => {
+      setAPIDatas(response.data);
+    });
+  }, []);
+  console.log(APIDatas)
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -17,21 +30,21 @@ const RecipeList: React.VFC = () => {
       <ImageListItem key="Subheader" cols={2}>
         <ListSubheader component="div">December</ListSubheader>
       </ImageListItem>
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
+      {APIDatas.map((APIData: Ranking, index) => (
+        <ImageListItem key={APIData.params.foodImageUrl}>
           <img
-            src={`${item.img}?w=248&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
+            src={`${APIData.params.foodImageUrl}?w=248&fit=crop&auto=format`}
+            srcSet={`${APIData.params.foodImageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            alt={APIData.params.recipeTitle}
             loading="lazy"
           />
           <ImageListItemBar
-            title={item.title}
-            subtitle={item.author}
+            title={APIData.params.recipeTitle}
+            subtitle={APIData.params.nickname}
             actionIcon={
               <IconButton
                 sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                aria-label={`info about ${item.title}`}
+                aria-label={`info about ${APIData.params.recipeTitle}`}
               >
                 <InfoIcon />
               </IconButton>

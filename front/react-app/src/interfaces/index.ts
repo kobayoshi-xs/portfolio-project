@@ -36,3 +36,23 @@ export interface LargeCategoties {
     };
   //};
 }
+
+export interface Ranking {
+  params: {
+    foodImageUrl: string
+    mediumImageUrl: string
+    nickname: string
+    pickup: number
+    rank: string
+    recipeCost: string
+    recipeDescription: string
+    recipeId: number
+    recipeIndication: number
+    recipeMaterial: string[]
+    recipePublishday: string
+    recipeTitle: string
+    recipeUrl: string
+    shop: number
+    smallImageUrl: number
+  };
+}
