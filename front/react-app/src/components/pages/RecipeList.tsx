@@ -26,9 +26,9 @@ const RecipeList: React.VFC = () => {
     setExpanded(!expanded);
   };
   return (
-    <ImageList sx={{ width: 500, height: 450 }}>
+    <ImageList sx={{ width: "auto", height: "auto" }}>
       <ImageListItem key="Subheader" cols={2}>
-        <ListSubheader component="div">December</ListSubheader>
+        <ListSubheader component="div">メニュー一覧</ListSubheader>
       </ImageListItem>
       {APIDatas.map((APIData: Ranking, index) => (
         <ImageListItem key={APIData.params.foodImageUrl}>
