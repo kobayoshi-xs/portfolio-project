@@ -22,7 +22,7 @@ class Api::V1::Rakuten::SmallsController < ApplicationController
         categoryId: categoryId,
         categoryName: categoryName,
         categoryUrl: categoryUrl,
-        categories_medium_id: category_medium_id
+        categories_medium_id: categories_medium_id
       }
     end
 end
