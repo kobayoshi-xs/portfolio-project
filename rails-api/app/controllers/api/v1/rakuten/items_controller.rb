@@ -1,12 +1,6 @@
 class Api::V1::Rakuten::ItemsController < ApplicationController
   def search
     #@categories_larges = RakutenWebService::Recipe.large_categories
-    #@categories_larges.each do |categories_large|
-    #  item = CategoriesLarge.new(read(categories_large))
-    #  unless CategoriesLarge.all.exists?(categoryName: item.categoryName)
-    #    item.save!
-    #  end
-    #end
     #CategoriesLarge.destroy_all
     #@item_list = CategoriesLarge.all
     #render json: @item_list

@@ -13,15 +13,30 @@ import ListItemText from '@mui/material/ListItemText';
 import axios from "axios";
 
 import { LargeCategoties } from 'interfaces'
+import { Category } from "@mui/icons-material";
 
 const SideMenu: React.VFC = () => {
   const [APIDatas, setAPIDatas] = useState([]);
+  const [post, setPost] = useState("");
+
   useEffect(() => {
     axios.get('http://localhost:3000/api/v1/rakuten/larges').then((response) => {
       setAPIDatas(response.data);
     });
   }, []);//この"[]"はコンポーネントのマウント時だけでなく、更新時にも実行されてしまうのを防ぐためにある。
-  console.log(APIDatas)
+  //console.log(APIDatas)
+
+  const createPost = () => {
+    axios.post('http://localhost:3000/api/v1/rakuten/lists', {categoryId: "10"})
+    .then((response) => {
+      //setAPIDatas(response.data)
+      setPost(response.data);
+      console.log(post)
+    }).catch((error) => {
+      console.log(Object.keys(error))
+    });
+  }
+  console.log(post)
 
   const drawerWidth = 240;
 
@@ -38,7 +53,8 @@ const SideMenu: React.VFC = () => {
       <Box sx={{ overflow: 'auto' }}>
         <List>
           {APIDatas.map((APIData: LargeCategoties, index) => (
-            <ListItem button key={index}>
+            <ListItem button onClick={createPost} key={index}>
+              <div style={{display: 'none'}}>{APIData.params.categoryId}</div>
               <ListItemText primary={APIData.params.categoryName} />
             </ListItem>
           ))}
