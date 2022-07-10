@@ -8,6 +8,6 @@ class CreateCategoriesSmalls < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_foreign_key :categories_smalls, :categories_media, column: :categoryId , primary_key: :categoryId
+    add_foreign_key :categories_smalls, :categories_media, column: :categories_medium_id , primary_key: :categoryId
   end
 end

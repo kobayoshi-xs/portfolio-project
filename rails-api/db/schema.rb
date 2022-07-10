@@ -62,6 +62,6 @@ ActiveRecord::Schema.define(version: 2022_05_30_135325) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "categories_media", "categories_larges", column: "categoryId", primary_key: "categoryId"
-  add_foreign_key "categories_smalls", "categories_media", column: "categoryId", primary_key: "categoryId"
+  add_foreign_key "categories_media", "categories_larges", primary_key: "categoryId"
+  add_foreign_key "categories_smalls", "categories_media", primary_key: "categoryId"
 end

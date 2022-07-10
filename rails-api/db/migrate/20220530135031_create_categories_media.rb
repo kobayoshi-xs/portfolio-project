@@ -8,6 +8,6 @@ class CreateCategoriesMedia < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_foreign_key :categories_media, :categories_larges, column: :categoryId , primary_key: :categoryId
+    add_foreign_key :categories_media, :categories_larges, column: :categories_large_id , primary_key: :categoryId
   end
 end
