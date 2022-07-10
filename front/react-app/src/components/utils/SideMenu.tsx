@@ -24,7 +24,7 @@ const SideMenu: React.VFC = () => {
       setAPIDatas(response.data);
     });
   }, []);//この"[]"はコンポーネントのマウント時だけでなく、更新時にも実行されてしまうのを防ぐためにある。
-  //console.log(APIDatas)
+  console.log(APIDatas)
 
   const createPost = () => {
     axios.post('http://localhost:3000/api/v1/rakuten/lists', {categoryId: "10"})
@@ -36,7 +36,7 @@ const SideMenu: React.VFC = () => {
       console.log(Object.keys(error))
     });
   }
-  console.log(post)
+  //console.log(post)
 
   const drawerWidth = 240;
 
@@ -54,12 +54,22 @@ const SideMenu: React.VFC = () => {
         <List>
           {APIDatas.map((APIData: LargeCategoties, index) => (
             <ListItem button onClick={createPost} key={index}>
+              <div style={{display: 'none'}}>{APIData.categoryId}</div>
+              <ListItemText primary={APIData.categoryName} />
+            </ListItem>
+          ))}
+        </List>
+      </Box>
+      {/*<Box sx={{ overflow: 'auto' }}>
+        <List>
+          {APIDatas.map((APIData: LargeCategoties, index) => (
+            <ListItem button onClick={createPost} key={index}>
               <div style={{display: 'none'}}>{APIData.params.categoryId}</div>
               <ListItemText primary={APIData.params.categoryName} />
             </ListItem>
           ))}
         </List>
-      </Box>
+      </Box>*/}
     </Drawer>
   )
 }

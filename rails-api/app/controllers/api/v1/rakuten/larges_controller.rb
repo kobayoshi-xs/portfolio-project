@@ -10,6 +10,7 @@ class Api::V1::Rakuten::LargesController < ApplicationController
     @item_list = CategoriesLarge.all
 
     render json: @item_list
+    #render json: @categories_larges
   end
 
   private
