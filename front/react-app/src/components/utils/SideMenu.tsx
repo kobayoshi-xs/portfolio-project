@@ -27,7 +27,7 @@ const SideMenu: React.VFC = () => {
   //console.log(APIDatas)
 
   const createPost = () => {
-    axios.post('http://localhost:3000/api/v1/rakuten/lists', {categoryId: "?"})
+    axios.post('http://localhost:3000/api/v1/rakuten/lists', {category_id: "?"})
     .then((response) => {
       //setAPIDatas(response.data)
       setPost(response.data);
@@ -54,8 +54,8 @@ const SideMenu: React.VFC = () => {
         <List>
           {APIDatas.map((APIData: LargeCategoties, index) => (
             <ListItem button onClick={createPost} key={index}>
-              <div style={{display: 'none'}}>{APIData.categoryId}</div>
-              <ListItemText primary={APIData.categoryName} />
+              <div style={{display: 'none'}}>{APIData.category_id}</div>
+              <ListItemText primary={APIData.category_name} />
             </ListItem>
           ))}
         </List>
