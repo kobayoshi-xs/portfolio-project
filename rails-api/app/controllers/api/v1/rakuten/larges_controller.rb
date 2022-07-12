@@ -1,5 +1,5 @@
 class Api::V1::Rakuten::LargesController < ApplicationController
-  def search
+  def get
     @categories_larges = RakutenWebService::Recipe.large_categories
     @categories_larges.each do |categories_large|
       item = CategoriesLarge.new(read(categories_large))

@@ -1,5 +1,5 @@
 class Api::V1::Rakuten::SmallsController < ApplicationController
-  def search
+  def get
     @categories_smalls =  RakutenWebService::Recipe.small_categories
     @categories_smalls.each do |categories_small|
       item = CategoriesSmall.new(read(categories_small))

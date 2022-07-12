@@ -19,16 +19,16 @@ Rails.application.routes.draw do
         get "items", to: "items#read2(categories_medium)"
         get "items", to: "items#read3(categories_small)"
 
-        get "larges", to: "larges#search"
+        get "larges", to: "larges#get"
         get "larges", to: "larges#read"
 
-        get "media", to: "media#search"
+        get "media", to: "media#get"
         get "media", to: "media#read"
 
-        get "smalls", to: "smalls#search"
+        get "smalls", to: "smalls#get"
         get "smalls", to: "smalls#read"
 
-        get "lists", to: "lists#search"
+        get "lists", to: "lists#get"
       end
     end
   end

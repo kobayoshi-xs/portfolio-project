@@ -1,5 +1,5 @@
 class Api::V1::Rakuten::MediaController < ApplicationController
-  def search
+  def get
     @categories_media = RakutenWebService::Recipe.medium_categories
     @categories_media.each do |categories_medium|
       item = CategoriesMedium.new(read(categories_medium))
