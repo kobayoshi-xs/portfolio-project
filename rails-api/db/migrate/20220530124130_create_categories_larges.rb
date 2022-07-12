@@ -1,9 +1,9 @@
 class CreateCategoriesLarges < ActiveRecord::Migration[6.1]
   def change
     create_table :categories_larges, id: false do |t|
-      t.bigint :categoryId, null: false, primary_key: true
-      t.string :categoryName
-      t.string :categoryUrl
+      t.bigint :category_id, null: false, primary_key: true
+      t.string :category_name
+      t.string :category_url
 
       t.timestamps
     end

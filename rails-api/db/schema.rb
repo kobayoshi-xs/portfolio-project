@@ -12,25 +12,25 @@
 
 ActiveRecord::Schema.define(version: 2022_05_30_135325) do
 
-  create_table "categories_larges", primary_key: "categoryId", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "categoryName"
-    t.string "categoryUrl"
+  create_table "categories_larges", primary_key: "category_id", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "category_name"
+    t.string "category_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "categories_media", primary_key: "categoryId", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "categoryName"
-    t.string "categoryUrl"
+  create_table "categories_media", primary_key: "category_id", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "category_name"
+    t.string "category_url"
     t.bigint "categories_large_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["categories_large_id"], name: "index_categories_media_on_categories_large_id"
   end
 
-  create_table "categories_smalls", primary_key: "categoryId", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "categoryName"
-    t.string "categoryUrl"
+  create_table "categories_smalls", primary_key: "category_id", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "category_name"
+    t.string "category_url"
     t.bigint "categories_medium_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -62,6 +62,6 @@ ActiveRecord::Schema.define(version: 2022_05_30_135325) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "categories_media", "categories_larges", primary_key: "categoryId"
-  add_foreign_key "categories_smalls", "categories_media", primary_key: "categoryId"
+  add_foreign_key "categories_media", "categories_larges", primary_key: "category_id"
+  add_foreign_key "categories_smalls", "categories_media", primary_key: "category_id"
 end

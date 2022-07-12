@@ -1,8 +1,8 @@
 class CategoriesLarge < ApplicationRecord
-  self.primary_key = :categoryId
+  self.primary_key = :category_id
 
   has_many :categories_media
 
-  validates :categoryId, {presence: true}
-  validates :categoryUrl, {presence: true}
+  validates :category_id, {presence: true}
+  validates :category_url, {presence: true}
 end

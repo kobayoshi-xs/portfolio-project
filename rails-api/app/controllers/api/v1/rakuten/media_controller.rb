@@ -3,7 +3,7 @@ class Api::V1::Rakuten::MediaController < ApplicationController
     @categories_media = RakutenWebService::Recipe.medium_categories
     @categories_media.each do |categories_medium|
       item = CategoriesMedium.new(read(categories_medium))
-      unless CategoriesMedium.all.exists?(categoryName: item.categoryName)
+      unless CategoriesMedium.all.exists?(category_name: item.category_name)
         item.save!
       end
     end
@@ -14,14 +14,14 @@ class Api::V1::Rakuten::MediaController < ApplicationController
 
   private
   def read(categories_medium)
-    categoryId = categories_medium['categoryId']
-    categoryName = categories_medium['categoryName']
-    categoryUrl = categories_medium['categoryUrl']
+    category_id = categories_medium['categoryId']
+    category_name = categories_medium['categoryName']
+    category_url = categories_medium['categoryUrl']
     categories_large_id = categories_medium['parentCategoryId']
     {
-      categoryId: categoryId,
-      categoryName: categoryName,
-      categoryUrl: categoryUrl,
+      category_id: category_id,
+      category_name: category_name,
+      category_url: category_url,
       categories_large_id: categories_large_id
     }
   end

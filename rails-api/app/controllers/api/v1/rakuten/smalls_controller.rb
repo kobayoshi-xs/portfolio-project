@@ -3,7 +3,7 @@ class Api::V1::Rakuten::SmallsController < ApplicationController
     @categories_smalls =  RakutenWebService::Recipe.small_categories
     @categories_smalls.each do |categories_small|
       item = CategoriesSmall.new(read(categories_small))
-      unless CategoriesSmall.all.exists?(categoryName: item.categoryName)
+      unless CategoriesSmall.all.exists?(category_name: item.category_name)
         item.save!
       end
     end
@@ -14,14 +14,14 @@ class Api::V1::Rakuten::SmallsController < ApplicationController
 
   private
     def read(categories_small)
-      categoryId = categories_small['categoryId']
-      categoryName = categories_small['categoryName']
-      categoryUrl = categories_small['categoryUrl']
+      category_id = categories_small['categoryId']
+      category_name = categories_small['categoryName']
+      category_url = categories_small['categoryUrl']
       categories_medium_id = categories_small['parentCategoryId']
       {
-        categoryId: categoryId,
-        categoryName: categoryName,
-        categoryUrl: categoryUrl,
+        category_id: category_id,
+        category_name: category_name,
+        category_url: category_url,
         categories_medium_id: categories_medium_id
       }
     end
