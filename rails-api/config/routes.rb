@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         get "smalls", to: "smalls#search"
         get "smalls", to: "smalls#read"
 
-        post "lists", to: "lists#search"
+        get "lists", to: "lists#search"
       end
     end
   end
