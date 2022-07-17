@@ -5,19 +5,15 @@ import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import ListItemText from '@mui/material/ListItemText';
 
 import axios from "axios";
 
 import { LargeCategoties } from 'interfaces'
-import { Category } from "@mui/icons-material";
 
 const SideMenu: React.VFC = () => {
   const [APIDatas, setAPIDatas] = useState([]);
-  const [post, setPost] = useState("");
+  const [post, setPost] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/v1/rakuten/larges').then((response) => {
@@ -26,17 +22,16 @@ const SideMenu: React.VFC = () => {
   }, []);//この"[]"はコンポーネントのマウント時だけでなく、更新時にも実行されてしまうのを防ぐためにある。
   //console.log(APIDatas)
 
-  const createPost = () => {
-    axios.post('http://localhost:3000/api/v1/rakuten/lists', {category_id: "?"})
+  const createPost = (APIData: LargeCategoties) => {
+    console.log(APIData)
+    axios.post('http://localhost:3000/api/v1/rakuten/lists', {APIData: APIData})
     .then((response) => {
-      //setAPIDatas(response.data)
       setPost(response.data);
-      console.log(post)
-    }).catch((error) => {
-      console.log(Object.keys(error))
+      console.log("成功")
+    }).catch((e) => {
+      console.log(e.response.data.messages)
     });
   }
-  //console.log(post)
 
   const drawerWidth = 240;
 
@@ -53,7 +48,7 @@ const SideMenu: React.VFC = () => {
       <Box sx={{ overflow: 'auto' }}>
         <List>
           {APIDatas.map((APIData: LargeCategoties, index) => (
-            <ListItem button onClick={createPost} key={index}>
+            <ListItem button onClick={() => createPost(APIData)} key={index}>
               <div style={{display: 'none'}}>{APIData.category_id}</div>
               <ListItemText primary={APIData.category_name} />
             </ListItem>
