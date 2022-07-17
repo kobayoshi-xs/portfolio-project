@@ -23,7 +23,7 @@ const SideMenu: React.VFC = () => {
   //console.log(APIDatas)
 
   const createPost = (APIData: LargeCategoties) => {
-    console.log(APIData)
+    //console.log(APIData)
     axios.post('http://localhost:3000/api/v1/rakuten/lists', {APIData: APIData})
     .then((response) => {
       setPost(response.data);
