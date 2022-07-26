@@ -20,7 +20,7 @@ const RecipeList: React.VFC = () => {
       setAPIDatas(response.data);
     });
   }, []);
-  console.log(APIDatas)
+console.log(APIDatas)
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
