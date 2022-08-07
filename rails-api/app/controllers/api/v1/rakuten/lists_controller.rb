@@ -33,30 +33,26 @@ class Api::V1::Rakuten::ListsController < ApplicationController
     end
     @smalls_id = @small_lists.pluck(:category_id)
 
-    #@smalls_ids = []
     @media = []
-    #@res = []
 
     @small = []
-    @small_i
     #@medium_lists.categories_smalls
     @medium_lists.each_with_index do |medium_list|
       #binding.pry
       #@test = medium_list.categories_smalls
       #@res << medium_list.categories_smalls
       #@res_result = @res.flatten
-
+      smalls = medium_list.categories_smalls
       #medium_list[:category_id]
 
-      #@smalls_ids = @test.pluck(:category_id)
+      smalls_ids = smalls.pluck(:category_id)
 
-      medium_list.categories_smalls.pluck(:category_id).each do |small_id|
+      #medium_list.categories_smalls.pluck(:category_id).each do |small_id|
+      smalls_ids.each do |small_id|
         @small << "#{@get_ranking}-#{medium_list[:category_id]}-#{small_id}"
       end
 
-      @small_result = @small.flatten
-      #@tests.delete
-      #@a.delete
+      @small_results = @small.flatten
       #binding.pry
       #if medium_list[:category_id] == @test[:categories_medium_id]
       #  @smalls_ids << @test.pluck(:category_id)
@@ -69,13 +65,21 @@ class Api::V1::Rakuten::ListsController < ApplicationController
       #end
     end
 
-    binding.pry
-
-    #if @small_lists.present?
-    #  @smalls.each do |small|
-    #    @ranking_recipes = RakutenWebService::Recipe.ranking(category_id = "#{@get_ranking}-#{}-#{}")
-    #  end
-    #  render json: @ranking_recipes
+    #binding.pry
+    @ranking_recipes = []
+    #@recipes_result = []
+    if @small.present?
+      @small_results.each do |small_result|
+        #binding.pry
+        @ranking_recipes << RakutenWebService::Recipe.ranking(category_id = small_result)
+        sleep(0.001)
+        @ranking_result = @ranking_recipes.flatten
+        #@recipes_result << @ranking_recipes
+        #binding.pry
+      end
+      #sleep(1)
+      #binding.pry
+      render json: @ranking_result
     #elsif @medium_lists.present?
     #  @small_lists.each do |list|
     #    @ranking_recipes = RakutenWebService::Recipe.ranking(category_id = "#{@get_ranking}-#{list}")
@@ -88,10 +92,11 @@ class Api::V1::Rakuten::ListsController < ApplicationController
     #  render json: @ranking_recipes
     #else
       #@lists.each do |list|
-        @ranking_recipes =  RakutenWebService::Recipe.ranking(category_id = "30")
+       # @ranking_recipes =  RakutenWebService::Recipe.ranking(category_id = "30")
       #end
-      render json: @ranking_recipes
-    #end
+      #render json: @ranking_recipes
+      #render json: @ranking_recipes
+    end
     #recipes_id = ENV['RWS_APPLICATION_ID']
     #@recipes_ranking = Faraday.get("https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&applicationId=#{recipes_id}&categoryId=21-441-1464")
     #@ranking_recipes = RakutenWebService::Recipe.ranking(category_id = "10-66-50")
