@@ -36,15 +36,9 @@ class Api::V1::Rakuten::ListsController < ApplicationController
     @media = []
 
     @small = []
-    #@medium_lists.categories_smalls
-    @medium_lists.each_with_index do |medium_list|
-      #binding.pry
-      #@test = medium_list.categories_smalls
-      #@res << medium_list.categories_smalls
-      #@res_result = @res.flatten
-      smalls = medium_list.categories_smalls
-      #medium_list[:category_id]
 
+    @medium_lists.each_with_index do |medium_list|
+      smalls = medium_list.categories_smalls
       smalls_ids = smalls.pluck(:category_id)
 
       #medium_list.categories_smalls.pluck(:category_id).each do |small_id|
@@ -53,47 +47,36 @@ class Api::V1::Rakuten::ListsController < ApplicationController
       end
 
       @small_results = @small.flatten
-      #binding.pry
-      #if medium_list[:category_id] == @test[:categories_medium_id]
-      #  @smalls_ids << @test.pluck(:category_id)
-      #  @media << @medium_lists.pluck(:category_id)
-      #
-      #  @media.zip(@smalls_ids) do |medium, small_id|
-      #    @small << "#{@get_ranking}-#{medium}-#{small_id}"
-      #  end
-        #@small << "#{get_ranking}-#{}-#{@smalls_ids}"
-      #end
     end
 
-    #binding.pry
     @ranking_recipes = []
-    #@recipes_result = []
+
     if @small.present?
       @small_results.each do |small_result|
-        #binding.pry
         @ranking_recipes << RakutenWebService::Recipe.ranking(category_id = small_result)
         sleep(0.001)
         @ranking_result = @ranking_recipes.flatten
-        #@recipes_result << @ranking_recipes
-        #binding.pry
       end
-      #sleep(1)
-      #binding.pry
       render json: @ranking_result
-    #elsif @medium_lists.present?
-    #  @small_lists.each do |list|
-    #    @ranking_recipes = RakutenWebService::Recipe.ranking(category_id = "#{@get_ranking}-#{list}")
-    #  end
-    #  render json: @ranking_recipes
+      @small.clear
+      @medium_lists.clear
+      @ranking_recipes.clear
+    elsif @medium_lists.present?
+      @media_lists.each do |list|
+        @ranking_recipes = RakutenWebService::Recipe.ranking(category_id = "#{@get_ranking}-#{list}")
+        sleep(0.001)
+      end
+      render json: @ranking_recipes
+      @medium_lists.clear
     #elsif @test.present?
     #  @lists.each do |list|
     #    @ranking_recipes = RakutenWebService::Recipe.ranking(category_id = "#{list}")
     #  end
     #  render json: @ranking_recipes
-    #else
-      #@lists.each do |list|
-       # @ranking_recipes =  RakutenWebService::Recipe.ranking(category_id = "30")
-      #end
+    else
+      @lists.each do |list|
+        @ranking_recipes =  RakutenWebService::Recipe.ranking(category_id = "30")
+      end
       #render json: @ranking_recipes
       #render json: @ranking_recipes
     end
