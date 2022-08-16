@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 
 import axios from "axios";
 
 const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
+    padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    height: 60,
-    lineHeight: '60px',
   }));
-
-const darkTheme = createTheme({ palette: { mode: 'dark' } });
-const lightTheme = createTheme({ palette: { mode: 'light' } });
 
 const UnderMenu: React.VFC = () => {
   const [APIDatas, setAPIDatas] = useState([]);
@@ -27,30 +24,36 @@ const UnderMenu: React.VFC = () => {
   }, []);
   console.log(APIDatas)
 
-  return(
-    <Grid container spacing={2}>
-      {[lightTheme, darkTheme].map((theme, index) => (
-        <Grid item xs={6} key={index}>
-          <ThemeProvider theme={theme}>
-            <Box
-              sx={{
-                p: 2,
-                bgcolor: 'background.default',
-                display: 'grid',
-                gridTemplateColumns: { md: '1fr 1fr' },
-                gap: 2,
-              }}
-            >
-              {[0, 1, 2, 3, 4, 6, 8, 12, 16, 24].map((elevation) => (
-                <Item key={elevation} elevation={elevation}>
-                  {`elevation=${elevation}`}
-                </Item>
-              ))}
-            </Box>
-          </ThemeProvider>
+  const FormRow = () => {
+    return(
+      <React.Fragment>
+        <Grid item xs={4}>
+          <Item>Item</Item>
         </Grid>
-      ))}
-    </Grid>
+        <Grid item xs={4}>
+          <Item>Item</Item>
+        </Grid>
+        <Grid item xs={4}>
+          <Item>Item</Item>
+        </Grid>
+      </React.Fragment>
+    );
+  }
+
+  return(
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={1}>
+        <Grid container item spacing={3}>
+          <FormRow />
+        </Grid>
+        <Grid container item spacing={3}>
+          <FormRow />
+        </Grid>
+        <Grid container item spacing={3}>
+          <FormRow />
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
 
