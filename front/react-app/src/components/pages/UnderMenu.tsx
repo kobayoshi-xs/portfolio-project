@@ -27,15 +27,11 @@ const UnderMenu: React.VFC = () => {
   const FormRow = () => {
     return(
       <React.Fragment>
-        <Grid item xs={4}>
-          <Item>Item</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>Item</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>Item</Item>
-        </Grid>
+        {APIDatas.map(() => (
+          <Grid item xs={4}>
+            <Item>Item</Item>
+          </Grid>
+        ))}
       </React.Fragment>
     );
   }
