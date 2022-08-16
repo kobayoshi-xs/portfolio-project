@@ -10,6 +10,7 @@ import { Pagination } from "@mui/material";
 import RecipeLarge from "components/pages/RecipeLarge";
 import SideMenu from "components/utils/SideMenu";
 import RecipeList from "./RecipeList";
+import UnderMenu from "./UnderMenu";
 
 //type RecipeAreaProps = {
   //children?: React.ReactNode//childlen?は子要素の指定がオプショナルであることを明示
@@ -38,6 +39,7 @@ const RecipeSeach: React.VFC = () => {
           <Paper elevation={3}>
             <div style={{margin:'auto',width:'95%'}}>
               <RecipeList />
+              <UnderMenu/>
               {/*{children}*/}
             </div>
           </Paper>
