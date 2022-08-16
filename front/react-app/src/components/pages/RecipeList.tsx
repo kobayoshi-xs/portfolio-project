@@ -12,7 +12,6 @@ import axios from "axios";
 import { Ranking } from "interfaces";
 
 const RecipeList: React.VFC = () => {
-  const [expanded, setExpanded] = React.useState(false);
   const [APIDatas, setAPIDatas] = useState([]);
 
   useEffect(() => {
@@ -22,16 +21,13 @@ const RecipeList: React.VFC = () => {
   }, []);
 console.log(APIDatas)
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
   return (
     <ImageList sx={{ width: "auto", height: "auto" }}>
-      <ImageListItem key="Subheader" cols={2}>
+      <ImageListItem key="Subheader" cols={4}>
         <ListSubheader component="div">メニュー一覧</ListSubheader>
       </ImageListItem>
-      {APIDatas.map((APIData: Ranking, index) => (
-        <ImageListItem key={APIData.params.foodImageUrl}>
+      {APIDatas.flat().map((APIData: Ranking, index) => (
+        <ImageListItem key={APIData.params.foodImageUrl} sx={{ width: 240, height: 50 }}>
           <img
             src={`${APIData.params.foodImageUrl}?w=248&fit=crop&auto=format`}
             srcSet={`${APIData.params.foodImageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
