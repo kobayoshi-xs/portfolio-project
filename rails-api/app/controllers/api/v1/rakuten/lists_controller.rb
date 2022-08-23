@@ -78,19 +78,19 @@ class Api::V1::Rakuten::ListsController < ApplicationController
 
   #private
   def post
-    #@data = params[:APIData]
-    #if data.nil?
+    data = params[:APIData]
+    if data.nil?
       #binding.pry
       #@new_data = 30
-    #  @get_ranking = 30
+      @get_ranking = 30
       #binding.pry
-    #else
-      #@ranking_data = @data[:category_id]
+    else
+      @ranking_data = @data[:category_id]
       #binding.pry
       #@test_data = @ranking_data
-      #@get_ranking = @ranking_data
+      @get_ranking = @ranking_data
       #binding.pry
-    #end
+    end
 
     #if data.nil? && @new_data == 30
     #  @get_ranking = @new_data

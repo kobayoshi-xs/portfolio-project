@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
+import Box, { BoxProps } from '@mui/material/Box';
 
 import axios from "axios";
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
 
 const UnderMenu: React.VFC = () => {
   const [APIDatas, setAPIDatas] = useState([]);
@@ -24,31 +13,46 @@ const UnderMenu: React.VFC = () => {
   }, []);
   console.log(APIDatas)
 
-  const FormRow = () => {
-    return(
-      <React.Fragment>
-        {APIDatas.map(() => (
-          <Grid item xs={4}>
-            <Item>Item</Item>
-          </Grid>
-        ))}
-      </React.Fragment>
+  const Item = (props: BoxProps) => {
+    const { sx, ...other } = props;
+    return (
+      <Box
+        sx={{
+          p: 1,
+          m: 1,
+          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : 'grey.100'),
+          color: (theme) => (theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800'),
+          border: '1px solid',
+          borderColor: (theme) =>
+            theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+          borderRadius: 2,
+          fontSize: '0.875rem',
+          fontWeight: '700',
+          ...sx,
+        }}
+        {...other}
+      />
     );
   }
 
   return(
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={1}>
-        <Grid container item spacing={3}>
-          <FormRow />
-        </Grid>
-        <Grid container item spacing={3}>
-          <FormRow />
-        </Grid>
-        <Grid container item spacing={3}>
-          <FormRow />
-        </Grid>
-      </Grid>
+    <Box
+     sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        p: 1,
+        m: 1,
+        bgcolor: 'background.paper',
+        maxWidth: 300,
+        borderRadius: 1,
+      }}
+    >
+      <Item>Item 1</Item>
+      <Item>Item 2</Item>
+      <Item>Item 3</Item>
+      <Item>Item 4</Item>
+      <Item>Item 5</Item>
+      <Item>Item 6</Item>
     </Box>
   );
 }
