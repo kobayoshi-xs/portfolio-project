@@ -1,11 +1,21 @@
 class Api::V1::Rakuten::ListsController < ApplicationController
   before_action :post
   def get
-    @get_ranking = 30#react側から送られてくる、カテゴリー（大）の仮id
-
+    #data = params[:APIData]
+    #binding.pry
+    #if data.nil?
+    #  @get_ranking = 30
+    #else
+    #  @ranking_data = data[:category_id]
+    #  @get_ranking = @ranking_data
+      #binding.pry
+    #end
+    #binding.pry
+    #@get_ranking = 30#react側から送られてくる、カテゴリー（大）の仮id
     #テーブル結合
+    #binding.pry
     @categories_items = CategoriesLarge.includes(categories_media: :categories_smalls)
-
+    #binding.pry
     #結合データからクリックアクションで取得したカテゴリー（大）データを抽出
     @lists = @categories_items.where(category_id: @get_ranking)
 
@@ -48,14 +58,12 @@ class Api::V1::Rakuten::ListsController < ApplicationController
       end
 
       @small_results = @small.flatten
+      @recipes = @small_results[0..2]
     end
-
-    @tests = ["30-306", "30-305"]
-    @tests.each do |small_result|
+    @recipes.each do |small_result|
       @ranking_recipes << RakutenWebService::Recipe.ranking(category_id = small_result)
       sleep(0.000001)
       #binding.pry
-      #@ranking_result = @ranking_recipes.flatten
     end
     #binding.pry
     @ranking_result = @ranking_recipes.flatten
@@ -66,38 +74,35 @@ class Api::V1::Rakuten::ListsController < ApplicationController
     @small_lists.clear
     @small.clear
     @ranking_recipes.clear
-
-    #if @small.present?
-    #  @small_results.each do |small_result|
-    #    @ranking_recipes << RakutenWebService::Recipe.ranking(category_id = small_result)
-    #    sleep(0.001)
-    #    @ranking_result = @ranking_recipes.flatten
-    #  end
-     # render json: @ranking_result
-    #  @small.clear
-    #  @medium_lists.clear
-    #  @ranking_recipes.clear
-    #elsif @medium_lists.present?
-    #  @media_lists.each do |list|
-    #    @ranking_recipes = RakutenWebService::Recipe.ranking(category_id = "#{@get_ranking}-#{list}")
-    #    sleep(0.001)
-    #  end
-    #  render json: @ranking_recipes
-    #  @medium_lists.clear
-    # else
-    #  @lists.each do |list|
-    #    @ranking_recipes =  RakutenWebService::Recipe.ranking(category_id = "30")
-    #  end
-    #end
   end
 
-  private
+  #private
   def post
+    #@data = params[:APIData]
+    #if data.nil?
+      #binding.pry
+      #@new_data = 30
+    #  @get_ranking = 30
+      #binding.pry
+    #else
+      #@ranking_data = @data[:category_id]
+      #binding.pry
+      #@test_data = @ranking_data
+      #@get_ranking = @ranking_data
+      #binding.pry
+    #end
+
+    #if data.nil? && @new_data == 30
+    #  @get_ranking = @new_data
+    #else
+    #  @get_ranking = @test_data
+    #end
+    #binding.pry
     #@ranking_data = params[:APIData][:category_id]
     #if @ranking_data.nil?
-    #  @get_ranking = @ranking_data
-    #else
     #  @get_ranking = 30
+    #else
+    #  @get_ranking = @ranking_data
     #end
   end
 end
