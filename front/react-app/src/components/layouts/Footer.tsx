@@ -18,8 +18,12 @@ export const Footer: React.VFC = () => {
         },
         color: 'black',
         bgcolor: 'orange',
-        width: 'auto',
-        position: 'static',
+        //width: 'auto',
+        //position: 'static',
+        width: 1,
+        height: '5%',
+        position: 'absolute',
+        zIndex: 'tooltip',
       }}
     >
       <BottomNavigation>
