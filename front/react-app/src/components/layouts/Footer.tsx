@@ -9,7 +9,7 @@ export const Footer: React.VFC = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
+        //display: 'flex',
         pt: 5,
         flexDirection: 'column',
         alignItems: 'center',
@@ -22,7 +22,10 @@ export const Footer: React.VFC = () => {
         //position: 'static',
         width: 1,
         height: '5%',
-        position: 'absolute',
+        position: "fixed",
+        //position: 'absolute',
+        bottom: 0,
+        mt: 'auto',
         zIndex: 'tooltip',
       }}
     >

@@ -10,6 +10,7 @@ import { Notfound } from "components/pages/NotFound";
 
 import { Container, Grid } from "@mui/material";
 import styled from "@emotion/styled";
+import { Box } from "@mui/material";
 
 {/*const drawerWidth = 240;*/}
 
@@ -27,6 +28,7 @@ type CommonLayoutProps = {
 const CommonLayout: React.VFC<CommonLayoutProps> = ({children}) => {
   return (
     <>
+    //<Box sx={{display: "flex", flexDirection: "column", minHeight: "100%",}}>
       <header>
         <Header />
       </header>
@@ -42,6 +44,7 @@ const CommonLayout: React.VFC<CommonLayoutProps> = ({children}) => {
       <footer>
         <Footer />
       </footer>
+    //</Box>
     </>
   )
 }
