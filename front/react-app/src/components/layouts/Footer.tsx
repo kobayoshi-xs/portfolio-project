@@ -5,6 +5,8 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import { AppBar } from "@mui/material";
 import CopyrightIcon from '@mui/icons-material/Copyright';
 
+import FooterIcon from "components/utils/FooterIcon";
+
 export const Footer: React.VFC = () => {
   return (
     <Box
@@ -29,9 +31,10 @@ export const Footer: React.VFC = () => {
         zIndex: 'tooltip',
       }}
     >
-      <BottomNavigation>
-        <CopyrightIcon />
-      </BottomNavigation>
+      <FooterIcon />
+      {/*<BottomNavigation>*/}
+        {/*<CopyrightIcon />*/}
+      {/*</BottomNavigation>*/}
     </Box>
   )
 }

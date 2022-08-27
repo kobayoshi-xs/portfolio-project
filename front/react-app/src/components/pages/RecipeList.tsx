@@ -24,7 +24,7 @@ console.log(APIDatas)
 const drawerWidth = 240;
 
   return (
-    <ImageList sx={{ width: "auto", height: "auto", zIndex: 'modal' }}>
+    <ImageList sx={{ width: "auto", height: "auto", }}>
       <ImageListItem key="Subheader" cols={4}>
         <ListSubheader component="div">メニュー一覧</ListSubheader>
       </ImageListItem>

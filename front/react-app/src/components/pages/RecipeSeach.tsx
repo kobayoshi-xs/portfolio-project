@@ -31,13 +31,13 @@ const RecipeSeach: React.VFC = () => {
             flexWrap: 'wrap',
             '& > :not(style)': {
               m: 1,
-              width: 1050,
-              height: 4000,
+              width: 1000,
+              height: 'auto',
             },
           }}
         >
           <Paper elevation={3}>
-            <div style={{margin:'auto',width:'95%'}}>
+            <div style={{margin:'auto',width:'97%', height: 'auto',}}>
               <RecipeList />
               <UnderMenu/>
               {/*{children}*/}
