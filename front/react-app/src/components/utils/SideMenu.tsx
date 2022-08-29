@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 import axios from "axios";
 
-import { LargeCategoties } from 'interfaces'
+import { Categoties } from 'interfaces'
 
 const SideMenu: React.VFC = () => {
   const [APIDatas, setAPIDatas] = useState([]);
@@ -22,7 +22,7 @@ const SideMenu: React.VFC = () => {
   }, []);//この"[]"はコンポーネントのマウント時だけでなく、更新時にも実行されてしまうのを防ぐためにある。
   //console.log(APIDatas)
 
-  const createPost = (APIData: LargeCategoties) => {
+  const createPost = (APIData: Categoties) => {
     //console.log(APIData)
     axios.post('http://localhost:3000/api/v1/rakuten/lists', {APIData: APIData})
     .then((response) => {
@@ -47,7 +47,7 @@ const SideMenu: React.VFC = () => {
       <Toolbar />
       <Box sx={{ overflow: 'auto' }}>
         <List>
-          {APIDatas.map((APIData: LargeCategoties, index) => (
+          {APIDatas.map((APIData: Categoties, index) => (
             <ListItem button onClick={() => createPost(APIData)} key={index}>
               <div style={{display: 'none'}}>{APIData.category_id}</div>
               <ListItemText primary={APIData.category_name} />

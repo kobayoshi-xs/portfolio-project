@@ -68,6 +68,30 @@ class Api::V1::Rakuten::ItemsController < ApplicationController
     #  }
     #end
 
+    def receive
+      data = params[:APIData]
+    end
+
+    def send
+      #テーブル結合
+      #binding.pry
+      @categories_items = CategoriesLarge.includes(categories_media: :categories_smalls)
+      #binding.pry
+      #結合データからクリックアクションで取得したカテゴリー（大）データを抽出
+      @lists = @categories_items.where(category_id: @get_ranking)
+
+      @medium_lists = []#抽出したカテゴリー（中）データを格納
+
+      #カテゴリー（大）データからカテゴリー（中）データを抽出
+      @lists.each do |list|
+        list.categories_media.each do |categories_medium|
+          @medium_lists << categories_medium
+        end
+      end
+
+      #render json: @medium_lists
+    end
+
     def read3(categories_small)
       categoryId = categories_small['categoryId']
       categoryName = categories_small['categoryName']

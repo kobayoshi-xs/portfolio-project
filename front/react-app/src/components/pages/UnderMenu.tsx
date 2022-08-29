@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Box, { BoxProps } from '@mui/material/Box';
 
+import { Categoties } from "interfaces";
 import axios from "axios";
 
 const UnderMenu: React.VFC = () => {
   const [APIDatas, setAPIDatas] = useState([]);
+  const [Post, setPost] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/v1/rakuten/lists').then((response) => {
@@ -12,6 +14,17 @@ const UnderMenu: React.VFC = () => {
     });
   }, []);
   console.log(APIDatas)
+
+  const createPost = (APIData: Categoties) => {
+    //console.log(APIData)
+    axios.post('http://localhost:3000/api/v1/rakuten/lists', {APIData: APIData})
+    .then((response) => {
+      setPost(response.data);
+      console.log("成功")
+    }).catch((e) => {
+      console.log(e.response.data.messages)
+    });
+  }
 
   const Item = (props: BoxProps) => {
     const { sx, ...other } = props;
