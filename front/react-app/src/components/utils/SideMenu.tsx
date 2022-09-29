@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, createContext} from "react";
+//import { createContext } from "react";
 
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -9,7 +10,11 @@ import ListItemText from '@mui/material/ListItemText';
 
 import axios from "axios";
 
+import RecipeList from "components/pages/RecipeList";
 import { Categoties } from 'interfaces'
+import { PropaneSharp } from "@mui/icons-material";
+
+//export const RecipeList = createContext()
 
 const SideMenu: React.VFC = () => {
   const [APIDatas, setAPIDatas] = useState([]);
@@ -24,10 +29,12 @@ const SideMenu: React.VFC = () => {
 
   const createPost = (APIData: Categoties) => {
     //console.log(APIData)
-    axios.post('http://localhost:3000/api/v1/rakuten/lists', {APIData: APIData})
+    axios.post('http://localhost:3000/api/v1/rakuten/items', {APIData: APIData})
     .then((response) => {
       setPost(response.data);
+      <RecipeList {...response.data} />
       console.log("成功")
+      console.log(response.data);
     }).catch((e) => {
       console.log(e.response.data.messages)
     });

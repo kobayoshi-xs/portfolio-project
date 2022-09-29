@@ -9,7 +9,7 @@ const UnderMenu: React.VFC = () => {
   const [Post, setPost] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/rakuten/lists').then((response) => {
+    axios.get('http://localhost:3000/api/v1/rakuten/items').then((response) => {
       setAPIDatas(response.data);
     });
   }, []);
@@ -17,7 +17,7 @@ const UnderMenu: React.VFC = () => {
 
   const createPost = (APIData: Categoties) => {
     //console.log(APIData)
-    axios.post('http://localhost:3000/api/v1/rakuten/lists', {APIData: APIData})
+    axios.post('http://localhost:3000/api/v1/rakuten/items', {APIData: APIData})
     .then((response) => {
       setPost(response.data);
       console.log("成功")

@@ -14,10 +14,10 @@ Rails.application.routes.draw do
       end
 
       namespace :rakuten do
+        #get "items", to: "items#search"
         get "items", to: "items#search"
-        get "items", to: "items#read(categorie_large)"
-        get "items", to: "items#read2(categories_medium)"
-        get "items", to: "items#read3(categories_small)"
+        post "items", to: "items#post"
+        #post "items", to: "items#send"
 
         get "larges", to: "larges#get"
         get "larges", to: "larges#read"
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
         get "lists", to: "lists#get"
         post "lists", to: "lists#post"
+        post "lists", to: "lists#list"
       end
     end
   end

@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React, { Children, createContext, useEffect } from "react";
 
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -12,12 +12,31 @@ import SideMenu from "components/utils/SideMenu";
 import RecipeList from "./RecipeList";
 import UnderMenu from "./UnderMenu";
 
+import axios from "axios";
+import { useState } from "react";
+
+import { Ranking } from "interfaces";
 //type RecipeAreaProps = {
   //children?: React.ReactNode//childlen?は子要素の指定がオプショナルであることを明示
 //}
 
+export const GetList = createContext({} as {
+  APIDatas: any
+  setAPIDatas: React.Dispatch<React.SetStateAction<any>>
+});
+
 //const RecipeArea: React.VFC<RecipeAreaProps> = ({children}) => {
 const RecipeSeach: React.VFC = () => {
+
+  const [APIDatas, setAPIDatas] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/v1/rakuten/items').then((response) => {
+      setAPIDatas(response.data);
+      console.log(response.data)
+    });
+  }, []);
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -38,7 +57,9 @@ const RecipeSeach: React.VFC = () => {
         >
           <Paper elevation={3}>
             <div style={{margin:'auto',width:'97%', height: 'auto',}}>
-              <RecipeList />
+              <GetList.Provider value={{APIDatas, setAPIDatas}}>
+                <RecipeList/>
+              </GetList.Provider>
               <UnderMenu/>
               {/*{children}*/}
             </div>
